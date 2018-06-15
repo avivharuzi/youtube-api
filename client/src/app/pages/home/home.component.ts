@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../../services/http.service';
+
+import { YoutubeService } from '../../services/youtube.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +12,23 @@ export class HomeComponent implements OnInit {
   public videos: any;
   public mainVideoId: string;
   public q: string;
+  public pageToken: string;
+  public done: boolean;
 
   constructor(
-    private httpService: HttpService
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private youtubeService: YoutubeService
   ) {
-    this.q = null;
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (params['q']) {
+        this.q = params['q'];
+      } else {
+        this.q = null;
+      }
+    });
+
+    this.done = false;
   }
 
   ngOnInit() {
@@ -22,23 +36,32 @@ export class HomeComponent implements OnInit {
   }
 
   getVideos(): void {
-    const options = {
-      key: 'AIzaSyB_7C3L2w67sHKVw6m9JKUmPmmu-p17m4o',
-      part: 'snippet',
-      q: this.q,
-      maxResults: 50,
-      type: 'video'
-    };
-
-    this.httpService.get('https://www.googleapis.com/youtube/v3/search', { params: options }).subscribe(videos => {
+    // this.router.navigate(['.'], { relativeTo: this.activatedRoute, queryParams: { q: this.q }});
+    this.router.navigate(['.'], { queryParams: { q: this.q }, queryParamsHandling: 'merge' });
+    this.youtubeService.getVideosBySearch(this.q).subscribe(videos => {
       this.videos = videos;
-      this.mainVideoId = this.videos.items[0].id.videoId;
       console.log(this.videos);
-    }, err => console.log(err));
+      this.mainVideoId = this.videos.items[0].id.videoId;
+      this.pageToken = this.videos.nextPageToken;
+    });
   }
 
-  getVideosNext(next: string): void {
-    //
+  getVideosNext(): void {
+    if (this.done) {
+      return;
+    }
+
+    this.youtubeService.getVideosByPageToken(this.pageToken).subscribe(videos => {
+      console.log(videos);
+      this.videos.items.push(...videos.items);
+      console.log(this.videos);
+      if (videos.nextPageToken) {
+        this.pageToken = videos.nextPageToken;
+      } else {
+        this.done = true;
+      }
+    });
+    // this.youtubeService.getVideosByPageToken(pageToken)
   }
 
   changeVideo(video: any): void {

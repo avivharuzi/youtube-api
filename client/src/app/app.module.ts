@@ -12,6 +12,9 @@ import { BackToTopModule } from './modules/back-to-top/back-to-top.module';
 import { LoadingModule } from './modules/loading/loading.module';
 import { PictureModule } from './modules/picture/picture.module';
 
+// Extra Modules
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 // Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -25,7 +28,6 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 // Directives
 import { DefaultImageDirective } from './directives/default-image.directive';
-
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { DefaultImageDirective } from './directives/default-image.directive';
     MessageModule.forRoot(),
     BackToTopModule.forRoot(),
     LoadingModule.forRoot(),
-    PictureModule.forRoot()
+    PictureModule.forRoot(),
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

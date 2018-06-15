@@ -13,7 +13,10 @@
       </iframe>
     </div>
   </div>
-  <div class="row">
+  <div class="row" infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="getVideosNext()">
     <div *ngFor="let video of videos.items" class="col-md-4 mb-5">
       <h3>{{ video.snippet.title }}</h3>
       <h6 class="text-secondary">{{ video.snippet.description }}</h6>
