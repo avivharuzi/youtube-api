@@ -1,3 +1,7 @@
-<p>
-  results works!
-</p>
+<div *ngIf="results && results.items.length && !loadingMain" class="container mt-5 mb-5" infiniteScroll [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50" (scrolled)="getResultsNextPage()">
+  <app-results-list [results]="results"></app-results-list>
+</div>
+<div *ngIf="loading" class="text-center mt-5 mb-5">
+  <img src="assets/images/tools/loading.gif" width="150px" height="150px">
+</div>

@@ -21,6 +21,7 @@ import { NgProgressRouterModule } from '@ngx-progressbar/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ResultsComponent } from './pages/results/results.component';
+import { ResultsListComponent } from './components/results-list/results-list.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { SearchComponent } from './components/search/search.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -40,6 +41,7 @@ import { DefaultImageDirective } from './directives/default-image.directive';
     AppComponent,
     HomeComponent,
     ResultsComponent,
+    ResultsListComponent,
     LogoComponent,
     SearchComponent,
     NavbarComponent,

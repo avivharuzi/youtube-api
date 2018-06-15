@@ -1,6 +1,6 @@
 <div class="input-group">
   <div class="input-group-prepend">
-    <button class="btn btn-secondary"><i class="fa fa-search"></i></button>
+    <button class="btn btn-secondary" (click)="onSearch()"><i class="fa fa-search"></i></button>
   </div>
-  <input type="search" class="form-control" placeholder="Search">
+  <input type="search" [(ngModel)]="q" (keydown.enter)="onSearch()" class="form-control" placeholder="Search">
 </div>
