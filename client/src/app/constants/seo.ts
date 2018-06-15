@@ -15,11 +15,16 @@ const home: SeoInterface = {
   title: 'Home'
 };
 
+const results: SeoInterface = {
+  title: 'Results'
+};
+
 const errorPage: SeoInterface = {
   title: '404 - Page Not Found'
 };
 
 export const seo = {
   home,
+  results,
   errorPage
 };

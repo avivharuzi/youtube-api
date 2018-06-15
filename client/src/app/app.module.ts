@@ -14,10 +14,13 @@ import { PictureModule } from './modules/picture/picture.module';
 
 // Extra Modules
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgProgressModule } from '@ngx-progressbar/core';
+import { NgProgressRouterModule } from '@ngx-progressbar/router';
 
 // Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ResultsComponent } from './pages/results/results.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { SearchComponent } from './components/search/search.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -36,6 +39,7 @@ import { DefaultImageDirective } from './directives/default-image.directive';
   declarations: [
     AppComponent,
     HomeComponent,
+    ResultsComponent,
     LogoComponent,
     SearchComponent,
     NavbarComponent,
@@ -57,7 +61,9 @@ import { DefaultImageDirective } from './directives/default-image.directive';
     BackToTopModule.forRoot(),
     LoadingModule.forRoot(),
     PictureModule.forRoot(),
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    NgProgressModule.forRoot(),
+    NgProgressRouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

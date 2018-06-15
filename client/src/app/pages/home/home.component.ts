@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   public q: string;
   public pageToken: string;
   public done: boolean;
+  public loading: boolean;
+  public loadingMain: boolean;
 
   constructor(
     private router: Router,
@@ -23,12 +25,12 @@ export class HomeComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       if (params['q']) {
         this.q = params['q'];
-      } else {
-        this.q = null;
       }
     });
 
     this.done = false;
+    this.loading = false;
+    this.loadingMain = true;
   }
 
   ngOnInit() {
@@ -37,12 +39,23 @@ export class HomeComponent implements OnInit {
 
   getVideos(): void {
     // this.router.navigate(['.'], { relativeTo: this.activatedRoute, queryParams: { q: this.q }});
+    this.loading = true;
+    this.loadingMain = true;
+
     this.router.navigate(['.'], { queryParams: { q: this.q }, queryParamsHandling: 'merge' });
+
     this.youtubeService.getVideosBySearch(this.q).subscribe(videos => {
-      this.videos = videos;
-      console.log(this.videos);
-      this.mainVideoId = this.videos.items[0].id.videoId;
-      this.pageToken = this.videos.nextPageToken;
+  
+        this.videos = videos;
+        console.log(this.videos);
+        this.mainVideoId = this.videos.items[0].id.videoId;
+        this.pageToken = this.videos.nextPageToken;
+      
+      this.loading = false;
+      this.loadingMain = false;
+    }, err => {
+      this.loading = false;
+      this.loadingMain = false;
     });
   }
 
@@ -50,16 +63,23 @@ export class HomeComponent implements OnInit {
     if (this.done) {
       return;
     }
+    this.loading = true;
 
     this.youtubeService.getVideosByPageToken(this.pageToken).subscribe(videos => {
-      console.log(videos);
-      this.videos.items.push(...videos.items);
-      console.log(this.videos);
-      if (videos.nextPageToken) {
-        this.pageToken = videos.nextPageToken;
-      } else {
-        this.done = true;
+      if (videos.items.length) {
+        console.log(videos);
+        this.videos.items.push(...videos.items);
+        console.log(this.videos);
+        if (videos.nextPageToken) {
+          this.pageToken = videos.nextPageToken;
+        } else {
+          this.done = true;
+        }
       }
+
+      this.loading = false;
+    }, err => {
+      this.loading = false;
     });
     // this.youtubeService.getVideosByPageToken(pageToken)
   }
