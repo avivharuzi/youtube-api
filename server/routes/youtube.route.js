@@ -15,7 +15,7 @@ router.get('/videos/search/:q', async (req, res) => {
 
 router.get('/videos/page/:pageToken', async (req, res) => {
     try {
-        const videos = await YoutubeHandler.getVideosByPage(req.params.pageToken);
+        const videos = await YoutubeHandler.getVideosByPageToken(req.params.pageToken);
         res.send(videos);
     } catch (e) {
         RouteHandler.error(res, 409, 'There page token is invalid no videos was found');

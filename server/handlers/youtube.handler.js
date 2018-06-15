@@ -23,7 +23,7 @@ class YoutubeHandler {
         });
     }
 
-    static async getVideosByPage(pageToken) {
+    static async getVideosByPageToken(pageToken) {
         return new Promise((resolve, reject) => {
             const videosOptions = options;
             videosOptions.pageToken = pageToken;
