@@ -20,3 +20,5 @@ class YoutubeHandler {
         }
     }
 }
+
+module.exports = YoutubeHandler;
