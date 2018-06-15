@@ -1,0 +1,58 @@
+#mainNavbar {
+  background: $white;
+  @include width-height(100%, 60px);
+  box-shadow: bottom-shadow(1);
+
+  position: relative;
+
+  div.navbar-container {
+    @include width-height(100%, 60px);
+    padding: 0 16px;
+  }
+
+  div.navbar-left {
+    width: 25%;
+    position: relative;
+    display: inline-block;
+
+    ul {
+      list-style-type: none;
+      @include no-space();
+      @include width-height(100%, 60px);
+      position: relative;
+      display: inline-block;
+
+      li {
+        position: relative;
+        float: left;
+
+        a {
+          line-height: 60px;
+          height: 60px;
+          margin-right: 50px;
+
+          svg {
+            height: 40px;
+            margin: 10px 0;
+          }
+        }
+      }
+    }
+  }
+
+  div.navbar-right {
+    width: 25%;
+    position: relative;
+    display: inline-block;
+  }
+
+  div.search-bar {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    height: 60px;
+    @include no-space();
+    @include absolute-center();
+    margin: 11px 40px;
+  }
+}

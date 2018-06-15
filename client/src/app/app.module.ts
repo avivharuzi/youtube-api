@@ -18,6 +18,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 // Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
+import { LogoComponent } from './components/logo/logo.component';
+import { SearchComponent } from './components/search/search.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 // Pipes
@@ -33,6 +36,9 @@ import { DefaultImageDirective } from './directives/default-image.directive';
   declarations: [
     AppComponent,
     HomeComponent,
+    LogoComponent,
+    SearchComponent,
+    NavbarComponent,
     ErrorPageComponent,
     DefaultImageDirective,
     CapitalizePipe,
