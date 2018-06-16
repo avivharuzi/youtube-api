@@ -10,6 +10,20 @@ const options = {
 }
 
 class YoutubeHandler {
+    static getPopularVideos() {
+        return new Promise((resolve, reject) => {
+            const videosOptions = options;
+            videosOptions.chart = 'mostPopular';
+            videosOptions.maxResults = 50;
+
+            youtube.videos.list(videosOptions)
+                .then(response => {
+                    resolve(response.data);
+                })
+                .catch(reject);
+        });
+    }
+
     static getVideosBySearch(q) {
         return new Promise((resolve, reject) => {
             const videosOptions = options;
@@ -23,7 +37,22 @@ class YoutubeHandler {
         });
     }
 
-    static async getVideosByPageToken(pageToken) {
+    static getVideoDetailsById(id) {
+        return new Promise((resolve, reject) => {
+            const videosOptions = options;
+            videosOptions.id = id;
+            videosOptions.part = 'snippet,contentDetails,statistics';
+            videosOptions.maxResults = 1;
+
+            youtube.videos.list(videosOptions)
+            .then(response => {
+                resolve(response.data);
+            })
+            .catch(reject);
+        });
+    }
+
+    static getVideosByPageToken(pageToken) {
         return new Promise((resolve, reject) => {
             const videosOptions = options;
             videosOptions.pageToken = pageToken;
