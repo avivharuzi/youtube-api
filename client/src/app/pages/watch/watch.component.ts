@@ -24,6 +24,7 @@ export class WatchComponent implements OnInit, OnDestroy {
       if (!this.v) {
         this.router.navigate(['/']);
       }
+      window.scrollTo(0, 0);
     });
   }
 
