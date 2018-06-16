@@ -7,15 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 // Custom Modules
-import { MessageModule } from './modules/message/message.module';
 import { BackToTopModule } from './modules/back-to-top/back-to-top.module';
-import { LoadingModule } from './modules/loading/loading.module';
-import { PictureModule } from './modules/picture/picture.module';
 
 // Extra Modules
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { NgProgressModule } from '@ngx-progressbar/core';
-import { NgProgressRouterModule } from '@ngx-progressbar/router';
 
 // Components
 import { AppComponent } from './app.component';
@@ -24,13 +19,12 @@ import { WatchComponent } from './pages/watch/watch.component';
 import { ResultsComponent } from './pages/results/results.component';
 import { ResultsListComponent } from './components/results-list/results-list.component';
 import { LogoComponent } from './components/logo/logo.component';
+import { ThemeComponent } from './components/theme/theme.component';
 import { SearchComponent } from './components/search/search.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 // Pipes
-import { CapitalizePipe } from './pipes/capitalize.pipe';
-import { UcwordsPipe } from './pipes/ucwords.pipe';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
@@ -45,12 +39,11 @@ import { DefaultImageDirective } from './directives/default-image.directive';
     ResultsComponent,
     ResultsListComponent,
     LogoComponent,
+    ThemeComponent,
     SearchComponent,
     NavbarComponent,
     ErrorPageComponent,
     DefaultImageDirective,
-    CapitalizePipe,
-    UcwordsPipe,
     TruncatePipe,
     SafeUrlPipe
   ],
@@ -61,13 +54,8 @@ import { DefaultImageDirective } from './directives/default-image.directive';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    MessageModule.forRoot(),
     BackToTopModule.forRoot(),
-    LoadingModule.forRoot(),
-    PictureModule.forRoot(),
-    InfiniteScrollModule,
-    NgProgressModule.forRoot(),
-    NgProgressRouterModule
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]
