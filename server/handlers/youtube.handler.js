@@ -12,7 +12,7 @@ const options = {
 class YoutubeHandler {
     static getPopularVideos() {
         return new Promise((resolve, reject) => {
-            const videosOptions = options;
+            const videosOptions = Object.assign({}, options);
             videosOptions.chart = 'mostPopular';
             videosOptions.maxResults = 50;
 
@@ -20,13 +20,15 @@ class YoutubeHandler {
                 .then(response => {
                     resolve(response.data);
                 })
-                .catch(reject);
+                .catch(err => {
+                    reject(err);
+                });
         });
     }
 
     static getVideosBySearch(q) {
         return new Promise((resolve, reject) => {
-            const videosOptions = options;
+            const videosOptions = Object.assign({}, options);
             videosOptions.q = q;
 
             youtube.search.list(videosOptions)
@@ -39,7 +41,7 @@ class YoutubeHandler {
 
     static getVideoDetailsById(id) {
         return new Promise((resolve, reject) => {
-            const videosOptions = options;
+            const videosOptions = Object.assign({}, options);
             videosOptions.id = id;
             videosOptions.part = 'snippet,contentDetails,statistics';
             videosOptions.maxResults = 1;
@@ -54,7 +56,7 @@ class YoutubeHandler {
 
     static getVideosByPageToken(pageToken) {
         return new Promise((resolve, reject) => {
-            const videosOptions = options;
+            const videosOptions = Object.assign({}, options);
             videosOptions.pageToken = pageToken;
 
             youtube.search.list(videosOptions)

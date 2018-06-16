@@ -22,6 +22,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { ThemeComponent } from './components/theme/theme.component';
 import { SearchComponent } from './components/search/search.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoadingComponent } from './components/loading/loading.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 // Pipes
@@ -42,6 +43,7 @@ import { DefaultImageDirective } from './directives/default-image.directive';
     ThemeComponent,
     SearchComponent,
     NavbarComponent,
+    LoadingComponent,
     ErrorPageComponent,
     DefaultImageDirective,
     TruncatePipe,

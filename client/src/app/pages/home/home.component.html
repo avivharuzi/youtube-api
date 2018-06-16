@@ -1,3 +1,4 @@
-<p>
-  home works!
-</p>
+<div *ngIf="videos" class="container mt-5 mb-5">
+  <app-results-list [results]="videos"></app-results-list>
+</div>
+<app-loading [loading]="loading"></app-loading>

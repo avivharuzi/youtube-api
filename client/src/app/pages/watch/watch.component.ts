@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Params } from '@angular/router';
 
+import { YoutubeService } from '../../services/youtube.service';
+
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -10,25 +12,38 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./watch.component.scss']
 })
 export class WatchComponent implements OnInit, OnDestroy {
-  public v: string;
+  public video: any;
+  public loading: boolean;
   public paramsSubscription: Subscription;
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private youtubeService: YoutubeService
   ) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
+
     this.paramsSubscription = this.activatedRoute.queryParams.subscribe((params: Params) => {
-      this.v = params['v'];
-      if (!this.v) {
+      let v = params['v'];
+      if (!v) {
         this.router.navigate(['/']);
       }
-      window.scrollTo(0, 0);
+      this.getVideoDetails(v);
     });
   }
 
   ngOnDestroy() {
     this.paramsSubscription.unsubscribe();
+  }
+
+  getVideoDetails(v: string): void {
+    this.loading = true;
+
+    this.youtubeService.getVideosDetailsById(v).subscribe(video => {
+      this.video = video.items[0];
+      this.loading = false;
+    });
   }
 }

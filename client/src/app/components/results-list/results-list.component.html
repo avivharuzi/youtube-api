@@ -1,12 +1,12 @@
 <div class="row">
-  <div *ngFor="let result of results.items" class="col-md-12 mb-5 result-item" (click)="watch(result.id.videoId)">
+  <div *ngFor="let result of results.items" class="col-md-12 mb-5 result-item" (click)="watch(result.id.videoId || result.id)">
     <div class="row">
       <div class="col-md-4">
-        <img class="w-100" [src]="result.snippet.thumbnails.high.url" [alt]="result.snippet.title">
+        <img appDefaultImage class="w-100" [src]="result.snippet.thumbnails.high.url" [alt]="result.snippet.title">
       </div>
       <div class="col-md-8">
         <h3 class="mb-3">{{ result.snippet.title }}</h3>
-        <h6 class="text-secondary">{{ result.snippet.description }}</h6>
+        <h6 class="text-secondary">{{ result.snippet.description | truncate:300 }}</h6>
       </div>
     </div>
   </div>
