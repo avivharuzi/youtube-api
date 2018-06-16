@@ -1,4 +1,4 @@
-<div *ngIf="results && results.items.length && !loadingMain" class="container mt-5 mb-5" infiniteScroll [infiniteScrollDistance]="2"
+<div *ngIf="results && results.items.length && !mainLoading" class="container mt-5 mb-5" infiniteScroll [infiniteScrollDistance]="2"
   [infiniteScrollThrottle]="50" (scrolled)="getResultsNextPage()">
   <app-results-list [results]="results"></app-results-list>
 </div>
