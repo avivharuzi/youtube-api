@@ -20,6 +20,7 @@ import { NgProgressRouterModule } from '@ngx-progressbar/router';
 // Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
+import { WatchComponent } from './pages/watch/watch.component';
 import { ResultsComponent } from './pages/results/results.component';
 import { ResultsListComponent } from './components/results-list/results-list.component';
 import { LogoComponent } from './components/logo/logo.component';
@@ -40,6 +41,7 @@ import { DefaultImageDirective } from './directives/default-image.directive';
   declarations: [
     AppComponent,
     HomeComponent,
+    WatchComponent,
     ResultsComponent,
     ResultsListComponent,
     LogoComponent,

@@ -5,34 +5,29 @@ import { Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  selector: 'app-watch',
+  templateUrl: './watch.component.html',
+  styleUrls: ['./watch.component.scss']
 })
-export class SearchComponent implements OnInit, OnDestroy {
-  public q: string;
+export class WatchComponent implements OnInit, OnDestroy {
+  public v: string;
   public paramsSubscription: Subscription;
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {
-    this.q = null;
-  }
+    private activatedRoute: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
     this.paramsSubscription = this.activatedRoute.queryParams.subscribe((params: Params) => {
-      this.q = params['q'];
+      this.v = params['v'];
+      if (!this.v) {
+        this.router.navigate(['/']);
+      }
     });
   }
 
   ngOnDestroy() {
     this.paramsSubscription.unsubscribe();
-  }
-
-  onSearch(): void {
-    if (this.q) {
-      this.router.navigate(['/results'], { queryParams: { q: this.q } });
-    }
   }
 }

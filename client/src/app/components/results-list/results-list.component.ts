@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-results-list',
@@ -8,5 +9,11 @@ import { Component, Input } from '@angular/core';
 export class ResultsListComponent {
   @Input() public results: any;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
+
+  watch(v: string): void {
+    this.router.navigate(['/watch'], { queryParams: { v: v } });
+  }
 }

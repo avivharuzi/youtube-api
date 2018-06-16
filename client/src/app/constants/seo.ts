@@ -15,6 +15,10 @@ const home: SeoInterface = {
   title: 'Home'
 };
 
+const watch: SeoInterface = {
+  title: 'Watch'
+};
+
 const results: SeoInterface = {
   title: 'Results'
 };
@@ -25,6 +29,7 @@ const errorPage: SeoInterface = {
 
 export const seo = {
   home,
+  watch,
   results,
   errorPage
 };
