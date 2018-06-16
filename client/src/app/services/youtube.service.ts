@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 
-import { YOUTUBE_VIDEOS_SEARCH, YOUTUBE_VIDEOS_PAGE_TOKEN } from './../constants/urls';
+import { YOUTUBE_VIDEOS_SEARCH, YOUTUBE_VIDEOS_PAGE_TOKEN, YOUTUBE_VIDEOS_DETAILS_BY_ID, YOUTUBE_VIDEOS_POPULAR } from './../constants/urls';
 
 import { Observable } from 'rxjs';
 
@@ -19,5 +19,13 @@ export class YoutubeService {
 
   getVideosByPageToken(pageToken: string): Observable<any>  {
     return this.httpService.get(`${YOUTUBE_VIDEOS_PAGE_TOKEN}/${pageToken}`);
+  }
+
+  getPopularVideos(): Observable<any> {
+    return this.httpService.get(`${YOUTUBE_VIDEOS_POPULAR}`);
+  }
+
+  getVideosDetailsById(id: string): Observable<any>  {
+    return this.httpService.get(`${YOUTUBE_VIDEOS_DETAILS_BY_ID}/${id}`);
   }
 }
