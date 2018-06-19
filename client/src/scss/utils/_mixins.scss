@@ -381,3 +381,8 @@ $breakpoints: (
     box-shadow: bottom-shadow($depth), top-shadow($depth);
   }
 }
+
+@mixin theme-dark-colors() {
+  background: $black-secondary !important;
+  color: $white !important;
+}

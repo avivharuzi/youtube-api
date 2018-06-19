@@ -1,0 +1,7 @@
+html.theme-dark {
+  @include theme-dark-colors();
+
+  body, #mainNavbar {
+    @include theme-dark-colors();
+  }
+}
