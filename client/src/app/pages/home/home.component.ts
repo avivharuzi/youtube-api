@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit {
     this.youtubeService.getPopularVideos().subscribe(videos => {
       this.videos = videos;
       this.loading = false;
+    }, err => {
+      console.log(err);
     });
   }
 }

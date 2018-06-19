@@ -47,6 +47,8 @@ export class WatchComponent implements OnInit, OnDestroy {
       this.video = video.items[0];
       this.loading = false;
       this.seoService.setTitle(this.video.snippet.title);
+    }, err => {
+      console.log(err);
     });
   }
 }
