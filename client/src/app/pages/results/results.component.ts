@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Params } from '@angular/router';
 
 import { YoutubeService } from '../../services/youtube.service';
+import { SeoService } from '../../services/seo.service';
 
 import { Subscription } from 'rxjs';
 
@@ -23,7 +24,8 @@ export class ResultsComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private youtubeService: YoutubeService
+    private youtubeService: YoutubeService,
+    private seoService: SeoService
   ) {
     this.done = false;
     this.loading = false;
@@ -35,6 +37,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
       this.q = params['q'];
       if (this.q) {
         this.getResults();
+        this.seoService.setTitle(this.q + ' - Youtube Api');
       } else {
         this.router.navigate(['/']);
       }
@@ -54,6 +57,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
       this.pageToken = this.results.nextPageToken;
       this.loading = false;
       this.mainLoading = false;
+      this.seoService.setTitle(this.q + ' - Youtube Api');
     }, err => {
       this.loading = false;
       this.mainLoading = false;

@@ -12,15 +12,15 @@ export interface SeoInterface {
 }
 
 const home: SeoInterface = {
-  title: 'Home'
+  title: 'Youtube Api'
 };
 
 const watch: SeoInterface = {
-  title: 'Watch'
+  title: ''
 };
 
 const results: SeoInterface = {
-  title: 'Results'
+  title: ''
 };
 
 const errorPage: SeoInterface = {

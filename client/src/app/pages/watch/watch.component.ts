@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Params } from '@angular/router';
 
 import { YoutubeService } from '../../services/youtube.service';
+import { SeoService } from '../../services/seo.service';
 
 import { Subscription } from 'rxjs';
 
@@ -19,7 +20,8 @@ export class WatchComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private youtubeService: YoutubeService
+    private youtubeService: YoutubeService,
+    private seoService: SeoService
   ) { }
 
   ngOnInit() {
@@ -44,6 +46,7 @@ export class WatchComponent implements OnInit, OnDestroy {
     this.youtubeService.getVideosDetailsById(v).subscribe(video => {
       this.video = video.items[0];
       this.loading = false;
+      this.seoService.setTitle(this.video.snippet.title);
     });
   }
 }
