@@ -1,4 +1,4 @@
-<div class="row">
+<div *ngIf="!isPopular" class="row">
   <div *ngFor="let result of results.items" class="col-md-12 mb-5 result-item" (click)="watch(result.id.videoId || result.id)">
     <div class="row">
       <div class="col-md-4">
@@ -8,6 +8,14 @@
         <h3 class="mb-3">{{ result.snippet.title }}</h3>
         <h6 class="text-secondary">{{ result.snippet.description | truncate:300 }}</h6>
       </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isPopular" class="row">
+  <div *ngFor="let result of results.items" class="col-md-3 mb-5 result-item" (click)="watch(result.id.videoId || result.id)">
+    <div class="card">
+      <h6 class="text-muted p-3" style="height: 100px">{{ result.snippet.title | truncate:50 }}</h6>
+      <img class="card-img-top" [src]="result.snippet.thumbnails.high.url" [alt]="result.snippet.title">
     </div>
   </div>
 </div>
