@@ -56,6 +56,12 @@
     &:hover {
       background: #e5e5e5;
     }
+
+    @include mq("phone-wide", "max") {
+      position: absolute;
+      top: 0;
+      right: 16px;
+    }
   }
 
   div.search-bar {
@@ -66,5 +72,16 @@
     @include no-space();
     @include absolute-center();
     margin: 11px 40px;
+
+    @include mq("phone-wide", "max") {
+      display: block;
+      position: relative;
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  @include mq("phone-wide", "max") {
+    @include width-height(100%, 140px);
   }
 }
