@@ -1,7 +1,7 @@
 # Client
-client/node_modules
-client/dist
+angular-src/node_modules
+angular-src/dist
 
 # Server
-server/node_modules
-server/.env
+node_modules
+.env
