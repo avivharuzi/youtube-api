@@ -4,5 +4,4 @@ angular-src/dist
 
 # Server
 node_modules
-public
 .env
