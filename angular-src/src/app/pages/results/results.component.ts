@@ -71,7 +71,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
 
     this.loading = true;
 
-    this.youtubeService.getVideosByPageToken(this.pageToken).subscribe(videos => {
+    this.youtubeService.getVideosByPageToken(this.q, this.pageToken).subscribe(videos => {
       this.results.items.push(...videos.items);
       if (videos.nextPageToken) {
         this.pageToken = videos.nextPageToken;

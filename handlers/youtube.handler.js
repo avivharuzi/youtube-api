@@ -12,9 +12,11 @@ const options = {
 class YoutubeHandler {
     static getPopularVideos() {
         return new Promise((resolve, reject) => {
-            const videosOptions = Object.assign({}, options);
-            videosOptions.chart = 'mostPopular';
-            videosOptions.maxResults = 50;
+            const videosOptions = Object.assign({
+                chart: 'mostPopular',
+            }, options, {
+                maxResults: 50
+            });
 
             youtube.videos.list(videosOptions)
                 .then(response => {
@@ -28,8 +30,9 @@ class YoutubeHandler {
 
     static getVideosBySearch(q) {
         return new Promise((resolve, reject) => {
-            const videosOptions = Object.assign({}, options);
-            videosOptions.q = q;
+            const videosOptions = Object.assign({
+                q
+            }, options);
 
             youtube.search.list(videosOptions)
                 .then(response => {
@@ -41,10 +44,12 @@ class YoutubeHandler {
 
     static getVideoDetailsById(id) {
         return new Promise((resolve, reject) => {
-            const videosOptions = Object.assign({}, options);
-            videosOptions.id = id;
-            videosOptions.part = 'snippet,contentDetails,statistics';
-            videosOptions.maxResults = 1;
+            const videosOptions = Object.assign({
+                id
+            }, options, {
+                part: 'snippet,contentDetails,statistics',
+                maxResults: 1
+            });
 
             youtube.videos.list(videosOptions)
             .then(response => {
@@ -54,10 +59,12 @@ class YoutubeHandler {
         });
     }
 
-    static getVideosByPageToken(pageToken) {
+    static getVideosByPageToken(q, pageToken) {
         return new Promise((resolve, reject) => {
-            const videosOptions = Object.assign({}, options);
-            videosOptions.pageToken = pageToken;
+            const videosOptions = Object.assign({
+                q,
+                pageToken
+            }, options);
 
             youtube.search.list(videosOptions)
                 .then(response => {

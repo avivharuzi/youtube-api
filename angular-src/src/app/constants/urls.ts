@@ -8,6 +8,6 @@ const BASE_API_URL: string = `${BASE_URL}/api`;
 const BASE_YOUTUBE_URL: string = `${BASE_API_URL}/youtube`;
 
 export const YOUTUBE_VIDEOS_SEARCH: string = `${BASE_YOUTUBE_URL}/videos/search`;
-export const YOUTUBE_VIDEOS_PAGE_TOKEN: string = `${BASE_YOUTUBE_URL}/videos/page`;
+export const YOUTUBE_VIDEOS_PAGE_TOKEN: string = `${BASE_YOUTUBE_URL}/videos`;
 export const YOUTUBE_VIDEOS_POPULAR: string = `${BASE_YOUTUBE_URL}/videos/popular`;
 export const YOUTUBE_VIDEOS_DETAILS_BY_ID: string = `${BASE_YOUTUBE_URL}/videos/details`;

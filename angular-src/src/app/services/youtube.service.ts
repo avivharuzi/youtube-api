@@ -17,8 +17,8 @@ export class YoutubeService {
     return this.httpService.get(`${YOUTUBE_VIDEOS_SEARCH}/${q}`);
   }
 
-  getVideosByPageToken(pageToken: string): Observable<any>  {
-    return this.httpService.get(`${YOUTUBE_VIDEOS_PAGE_TOKEN}/${pageToken}`);
+  getVideosByPageToken(q: string, pageToken: string): Observable<any>  {
+    return this.httpService.get(`${YOUTUBE_VIDEOS_PAGE_TOKEN}/${q}/page/${pageToken}`);
   }
 
   getPopularVideos(): Observable<any> {
