@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-8">
+    <h3>{{ video.snippet.title }}</h3>
+    <h6 class="text-secondary mt-3">{{ video.statistics.viewCount | number }} Views</h6>
+  </div>
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-12 text-md-right">
+        <h6 class="text-secondary">{{ video.snippet.publishedAt | date:'medium' }}</h6>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mt-3 text-md-right">
+        <span class="text-danger mr-3">
+          <i class="fa fa-thumbs-down mr-2"></i>{{ video.statistics.dislikeCount | number }}</span>
+        <span class="text-success">
+          <i class="fa fa-thumbs-up mr-2"></i>{{ video.statistics.likeCount | number }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <pre [innerHTML]="video.snippet.description | autoLink">
+      </pre>
+  </div>
+</div>

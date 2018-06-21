@@ -22,12 +22,15 @@ import { LogoComponent } from './components/logo/logo.component';
 import { ThemeComponent } from './components/theme/theme.component';
 import { SearchComponent } from './components/search/search.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { YoutubeIframeComponent } from './components/youtube-iframe/youtube-iframe.component';
+import { VideoItemComponent } from './components/video-item/video-item.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 // Pipes
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { AutoLinkPipe } from './pipes/auto-link.pipe';
 
 // Directives
 import { DefaultImageDirective } from './directives/default-image.directive';
@@ -43,11 +46,14 @@ import { DefaultImageDirective } from './directives/default-image.directive';
     ThemeComponent,
     SearchComponent,
     NavbarComponent,
+    YoutubeIframeComponent,
+    VideoItemComponent,
     LoadingComponent,
     ErrorPageComponent,
     DefaultImageDirective,
     TruncatePipe,
-    SafeUrlPipe
+    SafeUrlPipe,
+    AutoLinkPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'my-app' }),
